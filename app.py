@@ -1,8 +1,13 @@
-import streamlit as st # for web interfaces with Python
+# app.py
+import streamlit as st
+
 from welcome_screen import welcome_screen
-from question_generator import generate_question
+from quiz_screen import quiz_screen
+from end_screen import end_screen
+
 
 TOTAL_QUESTIONS = 10
+
 
 def init_state() -> None:
     """Set default values in session_state if they are missing."""
@@ -22,6 +27,10 @@ def main() -> None:
 
     if screen == "welcome":
         welcome_screen()
+    elif screen == "quiz":
+        quiz_screen()
+    elif screen == "end":
+        end_screen()
     else:
         # Fallback – go back to welcome if something weird happens
         st.session_state.screen = "welcome"
